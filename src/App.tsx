@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import { TUser } from './interfaces'
 import './App.css';
 import ToShowCustomers from './Components/ToShowCustomers';
-
 const App: FC = () => {
 
   const [name, setName] = useState<string>("");
@@ -28,33 +27,44 @@ const App: FC = () => {
     <div className='App'>
       <div className='header'>
         <div className='inputContainer'>
-          <input
-            type='text'
-            name='inputName'
-            placeholder='Name...'
-            onChange={(e) => {
-              console.log("-----", e.target.value)
-              setName(e.target.value)
-            }}
-          />
-          <input
-            type='text'
-            name='address'
-            placeholder='Address (Name)...'
-            onChange={(e) => setAddress(e?.target?.value)}
-          />
-          <input
-            type='tel'
-            name='number'
-            placeholder='Enter Your (Number)...'
-            onChange={(e) => setphoneNumber(e?.target?.value)}
-          />
+          <div className='input-dev'>
+            <input
+              type='text'
+              name='inputName'
+              placeholder='Name...'
+              onChange={(e) => {
+                console.log("-----", e.target.value)
+                setName(e.target.value)
+              }}
+            />
+            <input
+              type='text'
+              name='address'
+              placeholder='Address (Name)...'
+              onChange={(e) => setAddress(e?.target?.value)}
+            />
+            <input
+              type='tel'
+              name='number'
+              placeholder='Enter Your (Number)...'
+              onChange={(e) => setphoneNumber(e?.target?.value)}
+            />
+          </div>
         </div>
-        <button onClick={addTask}>Submit</button>
+        <div className='input-submit-btn'>
+          <button className='header-btn' onClick={addTask}>Submit</button>
+        </div>
       </div>
 
 
       <div className='customer-list'>
+        <table id="customers">
+          <tr>
+            <th>Name </th>
+            <th>Address</th>
+            <th>Phone Number</th>
+          </tr>
+        </table>
         {todoList.map((task: TUser, key: number) => {
           return <ToShowCustomers key={key} customer={task} completeTask={completeTask} />;
         })}
