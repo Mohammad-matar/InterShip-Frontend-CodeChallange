@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { TUser } from './interfaces'
+import axios from 'axios';
 import './App.css';
 import ToShowCustomers from './Components/ToShowCustomers';
 const App: FC = () => {
@@ -10,9 +11,12 @@ const App: FC = () => {
 
   const [todoList, setTodoList] = useState<TUser[]>([]);
   ///TO Add a task
-  const addTask = (): void => {
+  const addCustomer = (): void => {
     const newInfo: TUser = { userCustomerName: name, customerAddress: address, phoneNumber: phoneNumber };
     setTodoList([...todoList, newInfo]);
+    setName("");
+    setAddress("");
+    setphoneNumber("");
   }
 
   //To delete a task
@@ -22,9 +26,23 @@ const App: FC = () => {
       todoList.filter((customer) => {
         return customer.userCustomerName !== taskNameToDelete;
       }))
+
   }
+
+  // const addCustomer = () => {
+  //   const newInfo: TUser = { userCustomerName: name, customerAddress: address, phoneNumber: phoneNumber };
+  //   axios
+  //     .post(`http://localhost:6060/posts`, todoList)
+  //     .then((res) => {
+  //       setTodoList([...todoList, newInfo]);
+
+  //       alert('User Added Successfully');
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
   return (
-    <div className='App'>
+    <div className='App' >
       <div className='header'>
         <div className='inputContainer'>
           <div className='input-dev'>
@@ -32,6 +50,7 @@ const App: FC = () => {
               type='text'
               name='inputName'
               placeholder='Name...'
+              value={name}
               onChange={(e) => {
                 console.log("-----", e.target.value)
                 setName(e.target.value)
@@ -40,37 +59,41 @@ const App: FC = () => {
             <input
               type='text'
               name='address'
+              value={address}
               placeholder='Address (Name)...'
               onChange={(e) => setAddress(e?.target?.value)}
             />
             <input
               type='tel'
               name='number'
+              value={phoneNumber}
               placeholder='Enter Your (Number)...'
               onChange={(e) => setphoneNumber(e?.target?.value)}
             />
           </div>
         </div>
         <div className='input-submit-btn'>
-          <button className='header-btn' onClick={addTask}>Submit</button>
+          <button className='header-btn' onClick={addCustomer}>Submit</button>
         </div>
       </div>
 
 
       <div className='customer-list'>
+
         <table id="customers">
           <tr>
             <th>Name </th>
             <th>Address</th>
             <th>Phone Number</th>
+            <th></th>
           </tr>
+          {todoList.map((task: TUser, key: number) => {
+            return <ToShowCustomers key={key} customer={task} completeTask={completeTask} />;
+          })}
         </table>
-        {todoList.map((task: TUser, key: number) => {
-          return <ToShowCustomers key={key} customer={task} completeTask={completeTask} />;
-        })}
 
       </div>
-    </div>
+    </div >
   );
 }
 
