@@ -70,6 +70,7 @@ header {
   border-radius: 8px;
   cursor: pointer;
   padding: 10px;
+  margin-top: 14px;
 }
 .inputContainer {
   display: flex;
@@ -132,4 +133,9 @@ header {
   text-align: left;
   background-color: #3f51b5;
   color: white;
+}
+
+.phoneinput-class {
+  margin-top: 10px;
+  margin-left: 33rem;
 }

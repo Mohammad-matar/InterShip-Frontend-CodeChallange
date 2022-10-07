@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { TUser } from '../interfaces';
 
 //we create a props to passed them into the function
@@ -8,6 +7,8 @@ interface Props {
 }
 
 const ToShowCustomers = ({ customer, completeTask }: Props) => {
+
+    console.log(completeTask)
     return (
         <tr>
             <td>{customer.userCustomerName}</td>
@@ -21,9 +22,6 @@ const ToShowCustomers = ({ customer, completeTask }: Props) => {
                 >X</button>
             </td>
         </tr>
-
-
-
     )
 }
 
