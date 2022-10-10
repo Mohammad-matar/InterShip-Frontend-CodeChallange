@@ -70,7 +70,7 @@ header {
   border-radius: 8px;
   cursor: pointer;
   padding: 10px;
-  margin-top: 14px;
+  margin-top: 30px;
 }
 .inputContainer {
   display: flex;
@@ -81,7 +81,8 @@ header {
 .input-dev {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-content: center;
+  margin-left: 4%;
 }
 
 .header-btn {
@@ -91,14 +92,15 @@ header {
 }
 .input-dev input {
   padding: 10px;
-  margin: 10px;
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-radius: 8px;
-  width: 30%;
-  align-self: center;
+  width: 300px;
+  box-sizing: border-box;
+  margin-top: 12px;
 }
+
 .input-submit-btn {
   width: 100%;
   display: flex;
@@ -137,5 +139,10 @@ header {
 
 .phoneinput-class {
   margin-top: 10px;
-  margin-left: 33rem;
+  width: 30%;
+}
+
+.input_container {
+  width: 30%;
+  align-self: center;
 }

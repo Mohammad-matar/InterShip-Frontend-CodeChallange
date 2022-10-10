@@ -1,5 +1,5 @@
 export interface TUser {
-  userCustomerName: string;
-  customerAddress: string;
+  name: string;
+  address: string;
   phoneNumber: string;
 }

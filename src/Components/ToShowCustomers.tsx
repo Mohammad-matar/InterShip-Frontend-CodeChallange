@@ -3,21 +3,18 @@ import { TUser } from '../interfaces';
 //we create a props to passed them into the function
 interface Props {
     customer: TUser;
-    completeTask(taskNameToDelete: string): void;
 }
 
-const ToShowCustomers = ({ customer, completeTask }: Props) => {
-
-    console.log(completeTask)
+const ToShowCustomers = ({ customer }: Props) => {
     return (
         <tr>
-            <td>{customer.userCustomerName}</td>
-            <td>{customer.customerAddress}</td>
+            <td>{customer.name}</td>
+            <td>{customer.address}</td>
             <td>{customer.phoneNumber}</td>
             <td>
                 <button className='task-btn'
                     onClick={() => {
-                        completeTask(customer.userCustomerName);
+                        // completeTask(customer.name);
                     }}
                 >X</button>
             </td>
